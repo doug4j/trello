@@ -8,14 +8,15 @@
         {
             "idChecklist": "444444444444444444444444",
             "state": "complete",
-            "idMember": null,
+            "idMember": "4ee7df1be582acdec80000ae",
             "id": "555555555555555555555555",
             "name": "Example checkItem",
             "nameData": {
                 "emoji": {}
             },
             "pos": 2,
-            "due": null
+            "due": "2023-04-20T13:26:00.000Z",
+            "dueReminder":1440
         }
     ]
 }

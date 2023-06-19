@@ -2,6 +2,7 @@ package trello
 
 import (
 	"testing"
+	"time"
 )
 
 func TestCreateChecklist(t *testing.T) {
@@ -117,6 +118,16 @@ func TestGetChecklist(t *testing.T) {
 	if checklist.CheckItems[0].Pos != 2 {
 		t.Errorf("CheckItem Pos incorrect. Got '%0.2f'", checklist.CheckItems[0].Pos)
 	}
+	if checklist.CheckItems[0].IDMember != "4ee7df1be582acdec80000ae" {
+		t.Errorf("CheckItem IDMember incorrect. Got '%v'", checklist.CheckItems[0].IDMember)
+	}
+	expectedDue := time.Date(2023, 4, 20, 13, 26, 0, 0, time.UTC) //"2023-04-20T13:26:00.000Z"
+	if checklist.CheckItems[0].Due != expectedDue {
+		t.Errorf("CheckItem DueReminder incorrect. Got '%v'", checklist.CheckItems[0].Due)
+	}
+	if checklist.CheckItems[0].DueReminder != 1440 {
+		t.Errorf("CheckItem DueReminder incorrect. Got '%v'", checklist.CheckItems[0].DueReminder)
+	}
 }
 
 func TestChecklistSetClient(t *testing.T) {
@@ -138,7 +149,6 @@ func TestCheckItemSetClient(t *testing.T) {
 }
 
 // Utility function to get a simple response from Client.GetChecklist()
-//
 func testChecklist(t *testing.T) *Checklist {
 	c := testClient()
 	c.BaseURL = mockResponse("checklists", "checklist-api-example.json").URL

@@ -5,7 +5,10 @@
 
 package trello
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 // Checklist represents Trello card's checklists.
 // A card can have one zero or more checklists.
@@ -30,6 +33,9 @@ type CheckItem struct {
 	IDChecklist string     `json:"idChecklist,omitempty"`
 	Checklist   *Checklist `json:"-"`
 	Pos         float64    `json:"pos,omitempty"`
+	IDMember    string     `json:"idMember,omitempty"`
+	Due         time.Time  `json:"due,omitempty"`
+	DueReminder int        `json:"dueReminder,omitempty"`
 }
 
 // CheckItemState represents a CheckItem when it appears in CheckItemStates on a Card.
