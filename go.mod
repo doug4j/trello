@@ -1,4 +1,4 @@
-module github.com/adlio/trello
+module github.com/doug/trello
 
 go 1.13
 
